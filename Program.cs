@@ -1,46 +1,46 @@
-﻿namespace RemizekAdron
+namespace RemizekAdron
 {
     public class Program
     {
         static void Main(string[] args)
         {
-            //Zadání vstupních dat od uživatele
-            Console.WriteLine("Zadejte počáteční zeměpisnou šířku (ve formátu desetinných stupňů):");
+            //Zadání dat od uživatele
+            Console.WriteLine("Zadejte pocatecni zemepisnou sirku (ve formatu desetinnych stupnu):");
             double pocatecniSirka = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("Zadejte počáteční zeměpisnou délku (ve formátu desetinných stupňů):");
+            Console.WriteLine("Zadejte pocatecni zemepisnou delku (ve formatu desetinnych stupnu):");
             double pocatecniDelka = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("Zadejte koncovou zeměpisnou šířku (ve formátu desetinných stupňů):");
+            Console.WriteLine("Zadejte koncovou zemepisnou sirku (ve formatu desetinnych stupnu):");
             double koncovaSirka = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("Zadejte koncovou zeměpisnou délku (ve formátu desetinných stupňů):");
+            Console.WriteLine("Zadejte koncovou zemepisnou delku (ve formatu desetinnych stupnu):");
             double koncovaDelka = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("Zadejte celkovou délku dráhy dronu (v metrech):");
+            Console.WriteLine("Zadejte celkovou delku drahy dronu (v metrech):");
             double celkovaDelkaDrahy = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("Zadejte celkovou dobu letu dronu (v sekundách):");
+            Console.WriteLine("Zadejte celkovou dobu letu dronu (v sekundach):");
             double celkovaDobaLetu = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("Zadejte čas na videu, kde je místo údržby (v sekundách):");
+            Console.WriteLine("Zadejte cas na videu, kde je misto udrzby (v sekundach):");
             double casUdrzby = double.Parse(Console.ReadLine());
 
-            // Výpočet rychlosti dronu (v metrech za sekundu)
+            //Výpočet rychlosti dronu (v metrech za sekundu)
             double rychlost = celkovaDelkaDrahy / celkovaDobaLetu;
 
-            // Vypočtená vzdálenost od počátečního bodu k místu údržby
+            //Vypočítaná vzdálenost od počátečního bodu k místu údržby
             double vzdalenostVUdrzbe = rychlost * casUdrzby;
 
-            // Podíl urazene vzdálenosti na celkové vzdálenosti
+            //Podíl uražené vzdálenosti na celkové vzdálenosti
             double podil = vzdalenostVUdrzbe / celkovaDelkaDrahy;
 
-            // Interpolace GPS souřadnic
+            //Výpočet hodnot GPS souřadnic
             double sirkaUdrzby = pocatecniSirka + (koncovaSirka - pocatecniSirka) * podil;
             double delkaUdrzby = pocatecniDelka + (koncovaDelka - pocatecniDelka) * podil;
 
-            // Výstup výsledku
-            Console.WriteLine("GPS souřadnice místa údržby jsou:");
+            //Výsledek
+            Console.WriteLine("GPS souradnice mista udržby jsou:");
             Console.WriteLine($"Šířka (latitude): {sirkaUdrzby}");
             Console.WriteLine($"Délka (longitude): {delkaUdrzby}");
         }
